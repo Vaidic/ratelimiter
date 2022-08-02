@@ -60,7 +60,6 @@ public class RateLimiter {
         Long finalLastUpdateTime = lastUpdateTime;
         AtomicLong finalTokens = tokens;
         funcToTimestampAndTokenMap.compute(callingFunc, (k, v) -> new AbstractMap.SimpleEntry<>(finalLastUpdateTime, finalTokens));
-        System.out.println(tokens.get());
         if (tokens.get() < 0) {
             throw new RuntimeException("Max Allowed Rate Reached");
         } else {
